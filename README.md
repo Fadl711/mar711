@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👗 متجر ملابس الأطفال (Kids Clothing Store)
 
-## Getting Started
+متجر إلكتروني حديث لملابس الأطفال مبني باستخدام **Next.js** و **Supabase** مع دعم كامل للغة العربية وتجربة مستخدم مميزة.
 
-First, run the development server:
+## 🚀 تشغيل المشروع محلياً (Local Setup)
+
+لكي يعمل المشروع عندك، اتبع الخطوات التالية:
+
+### 1. تحميل المشروع
+
+```bash
+git clone https://github.com/Fadl711/mar711.git
+cd mar711
+```
+
+### 2. تثبيت المكتبات
+
+```bash
+npm install
+```
+
+### 3. إعداد البيئة (Environment Variables)
+
+قم بإنشاء ملف باسم `.env.local` في المجلد الرئيسي للمشروع، وأضف فيه القيم التالية (يمكنك الحصول عليها من صاحب المشروع أو من لوحة تحكم Supabase):
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_WHATSAPP_NUMBER=967... (رقم الواتساب بدون + أو أصفار في البداية)
+```
+
+### 4. تشغيل الموقع
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+افتح الرابط [http://localhost:3000](http://localhost:3000) في متصفحك.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 الرفع على Netlify (Deployment)
 
-## Learn More
+لرفع الموقع على Netlify وجعله متاحاً للجميع:
 
-To learn more about Next.js, take a look at the following resources:
+1. **ربط الحساب:** قم بتسجيل الدخول في Netlify واربطه بحسابك في GitHub.
+2. **إضافة الموقع:** اختر **"Add new site"** ثم **"Import an existing project"**.
+3. **اختيار المستودع:** اختر مستودع `mar711`.
+4. **إعدادات البناء (Build Settings):** سيقوم Netlify بالتعرف على Next.js تلقائياً. تأكد أن الإعدادات كالتالي:
+   - **Build Command:** `npm run build`
+   - **Publish directory:** `.next`
+5. **إضافة المتغيرات (Environment Variables) - خطوة مهمة جداً:**
+   - اذهب إلى **Site configuration** > **Environment variables**.
+   - أضف نفس القيم الموجودة في ملف `.env.local`:
+     - `NEXT_PUBLIC_SUPABASE_URL`
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+     - `NEXT_PUBLIC_WHATSAPP_NUMBER`
+6. **النشر:** اضغط على **"Deploy site"**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 قاعدة البيانات (Supabase)
 
-## Deploy on Vercel
+إذا كنت تستخدم قاعدة بيانات جديدة، تأكد من تشغيل الأوامر التالية في **SQL Editor** داخل Supabase:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sql
+-- إضافة عمود الصور المتعددة للمنتجات
+ALTER TABLE products ADD COLUMN images text[] DEFAULT '{}';
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔒 لوحة التحكم
+
+للدخول للوحة التحكم، اذهب إلى `/admin`. يجب أن يكون لديك حساب مسجل في Supabase Auth (قسم Authentication) لكي تتمكن من الدخول.
