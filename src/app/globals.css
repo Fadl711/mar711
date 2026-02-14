@@ -1,26 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-pink-50: #fef1f5;
+  --color-pink-100: #fde4ec;
+  --color-pink-200: #fcc9da;
+  --color-pink-300: #f9a0be;
+  --color-pink-400: #f472a0;
+  --color-pink-500: #e84882;
+  --color-pink-600: #d32a64;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-green-50: #edfcf5;
+  --color-green-100: #d4f7e4;
+  --color-green-200: #acedcd;
+  --color-green-300: #76deb0;
+  --color-green-400: #3ec88e;
+  --color-green-500: #1aad74;
+  --color-green-600: #0e8c5e;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-pastel-bg: #faf7f5;
+  --color-pastel-card: #ffffff;
+  --color-pastel-border: #f0e8e3;
+
+  --font-family-sans: "Noto Kufi Arabic", system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Kufi Arabic", system-ui, sans-serif;
+  background-color: var(--color-pastel-bg);
+  direction: rtl;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
